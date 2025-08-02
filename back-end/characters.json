@@ -47,6 +47,12 @@
       "name": "Hulk",
       "realName": "Bruce Banner",
       "universe": "Earth-616"
+    },
+    {
+      "id": 9,
+      "name": "This is a test",
+      "realName": "Nigger",
+      "universe": "Earth-naaaahh"
     }
   ]
 }
