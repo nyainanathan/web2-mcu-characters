@@ -35,24 +35,6 @@
       "name": "Doctor Strange",
       "realName": "Stephen Strange",
       "universe": "Earth-616"
-    },
-    {
-      "id": 7,
-      "name": "Scarlet Witch",
-      "realName": "Wanda Maximoff",
-      "universe": "Earth-616"
-    },
-    {
-      "id": 8,
-      "name": "Hulk",
-      "realName": "Bruce Banner",
-      "universe": "Earth-616"
-    },
-    {
-      "id": 9,
-      "name": "This is a test",
-      "realName": "Nigger",
-      "universe": "Earth-naaaahh"
     }
   ]
 }

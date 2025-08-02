@@ -23,6 +23,9 @@ app.post("/characters" , async (req, res) => {
         const data = await readFile("./characters.json", "utf-8");
         const parsedData = JSON.parse(data);
         parsedData.characters.push(added_characters);
+        for(let i = 0 ; i < parsedData.characters.length ; i++){
+            parsedData.characters[i].id = i + 1;
+        }
         await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
         res.status(201).send("Character added successfully!!")
     } catch (err) {
@@ -36,8 +39,6 @@ app.get("/characters/:id", async (req, res) => {
         const requiredId = req.params.id;
         const data = await readFile("./characters.json", "utf-8");
         const parsedData = JSON.parse(data);
-        console.log(parsedData);
-        
         for(const character of parsedData.characters) if(character.id == requiredId) res.status(200).send(character)
     } catch (err) {
         console.error(err);
@@ -51,11 +52,37 @@ app.put("/characters/:id" , async (req, res) => {
         const updated_character = req.body;
         const data = await readFile("./characters.json", "utf-8");
         const parsedData = JSON.parse(data);
-        parsedData.characters[requiredId] = updated_character
-        await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
-        res.status(201).send(parsedData)
+        if(requiredId <= parsedData.characters.length && requiredId > 0){
+            parsedData.characters[requiredId] = updated_character
+            await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
+            res.status(201).send("Character edited successfully!!")
+        } else {
+            res.status(400).send("The character you are trying to edit doesn't exist")
+        }
     } catch (err) {
         console.error(err);
+    }
+})
+
+app.delete("/characters/:id", async (req, res) => {
+    try{
+        const requiredId = req.params.id  - 1 ;
+        const data = await readFile("./characters.json", "utf-8");
+        let parsedData = JSON.parse(data);
+
+        if(requiredId <= parsedData.characters.length && requiredId > 0){
+            parsedData.characters.splice(requiredId,1);
+            for(let i = 0 ; i < parsedData.characters.length ; i++){
+                parsedData.characters[i].id = i + 1;
+            }
+            await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
+            res.send(parsedData)
+        } else {
+            throw new Error("The character you are trying to delete doesn't even exist")
+        }
+
+    } catch(err) {
+        console.error(err);        
     }
 })
 
