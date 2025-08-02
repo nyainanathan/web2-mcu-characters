@@ -45,4 +45,18 @@ app.get("/characters/:id", async (req, res) => {
     }
 })
 
+app.put("/characters/:id" , async (req, res) => {
+    try{
+        const requiredId = req.params.id  - 1 ;
+        const updated_character = req.body;
+        const data = await readFile("./characters.json", "utf-8");
+        const parsedData = JSON.parse(data);
+        parsedData.characters[requiredId] = updated_character
+        await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
+        res.status(201).send(parsedData)
+    } catch (err) {
+        console.error(err);
+    }
+})
+
 export default app;
