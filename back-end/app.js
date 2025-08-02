@@ -2,7 +2,6 @@ import express from 'express';
 import { readFile, writeFile } from 'fs/promises';
 
 const app = express();
-const PORT = 3000;
 
 app.use(express.json());
 
@@ -39,10 +38,14 @@ app.get("/characters/:id", async (req, res) => {
         const requiredId = req.params.id;
         const data = await readFile("./characters.json", "utf-8");
         const parsedData = JSON.parse(data);
-        for(const character of parsedData.characters) if(character.id == requiredId) res.status(200).send(character)
+        if(requiredId <= parsedData.characters.length){
+            for(const character of parsedData.characters) if(character.id == requiredId) res.status(200).send(character)
+        } else {
+            throw new Error("The character you are trying to get does not exit");
+        }
     } catch (err) {
-        console.error(err);
-        res.status(400)
+        console.error(err.message);
+        res.status(400).send(err.message)
     }
 })
 
@@ -57,10 +60,11 @@ app.put("/characters/:id" , async (req, res) => {
             await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
             res.status(201).send("Character edited successfully!!")
         } else {
-            res.status(400).send("The character you are trying to edit doesn't exist")
+            throw new Error("The character you are trying to edit doesn't exist");
         }
     } catch (err) {
         console.error(err);
+        res.status(400).send(err.message)
     }
 })
 
