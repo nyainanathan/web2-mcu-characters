@@ -13,6 +13,7 @@ app.get("/characters", async (req, res) => {
         res.status(200).send(parsedData.characters);
     } catch (err) {
         console.error(err);
+        res.status(400).send(err)
     }
 });
 
@@ -26,6 +27,21 @@ app.post("/characters" , async (req, res) => {
         res.status(201).send("Character added successfully!!")
     } catch (err) {
         console.error(err);
+        res.status(400).send(err);
+    }
+})
+
+app.get("/characters/:id", async (req, res) => {
+    try{
+        const requiredId = req.params.id;
+        const data = await readFile("./characters.json", "utf-8");
+        const parsedData = JSON.parse(data);
+        console.log(parsedData);
+        
+        for(const character of parsedData.characters) if(character.id == requiredId) res.status(200).send(character)
+    } catch (err) {
+        console.error(err);
+        res.status(400)
     }
 })
 
