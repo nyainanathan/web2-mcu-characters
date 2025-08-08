@@ -37,6 +37,13 @@ const MainTable = () => {
         setUniverse(thischaracter.universe);       
     }
 
+    const resetInputs = () => {
+        setId("ID") ;
+        setName("");
+        setRealName("");
+        setUniverse("");
+    }
+
     return (
         <>
             <h1 className='text-center p-4 text-4xl'>MCU Characters list</h1>
@@ -99,7 +106,7 @@ const MainTable = () => {
                     </td>
                     <td> 
                         <button className='mr-4'>Confirm</button>
-                        <button>Clear</button>
+                        <button onClick={resetInputs}>Clear</button>
                     </td>
                 </tr>
             </table>       
