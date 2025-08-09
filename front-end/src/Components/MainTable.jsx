@@ -86,6 +86,16 @@ const MainTable = () => {
         resetInputs();
     }
 
+    const handleDelete = async (charId) => {
+        const newSetOfCharacters = await fetch(`${baseUrl}/characters/${charId}` ,{
+            method: "DELETE"
+        });
+        const data = await newSetOfCharacters.json();
+
+        setCharacters([...data]);
+        console.log(characters);
+        
+    }
 
     return (
         <>
@@ -102,15 +112,15 @@ const MainTable = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {characters.map((character) => (
-                    <tr key={character.id} className='h-12 text-center border-1'>
+                {characters.map((character , index) => (
+                    <tr key={index} className='h-12 text-center border-1'>
                         <td className='w-1/5'>{character.id}</td>
                         <td className='w-1/5'>{character.name}</td>
                         <td className='w-1/5'>{character.realName}</td>
                         <td className='w-1/5'>{character.universe}</td>
                         <td className='flex h-full w-full justify-center items-center gap-3'>
                             <button onClick={() => handleEdit(character.id)} className='text-green-600'>Edit</button>
-                            <button className='text-red-600'>Delete</button>
+                            <button onClick={() => handleDelete(character.id)} className='text-red-600'>Delete</button>
                         </td>
                     </tr>
                 ))}

@@ -86,7 +86,7 @@ app.delete("/characters/:id", async (req, res) => {
                 parsedData.characters[i].id = i + 1;
             }
             await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
-            res.send(parsedData)
+            res.send(parsedData.characters)
         } else {
             throw new Error("The character you are trying to delete doesn't even exist")
         }

@@ -8,255 +8,27 @@
     },
     {
       "id": 2,
-      "name": "Iron Man",
-      "realName": "Tony Stark",
-      "universe": "Earth-616"
-    },
-    {
-      "id": 3,
       "name": "Captain America",
       "realName": "Steve Rogers",
       "universe": "Earth-616"
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Black Widow",
       "realName": "Natasha Romanoff",
       "universe": "Earth-616"
     },
     {
-      "id": 5,
+      "id": 4,
       "name": "Black Panther",
       "realName": "T'Challa",
       "universe": "Earth-616"
     },
     {
-      "id": 6,
+      "id": 5,
       "name": "Doctor Strange",
       "realName": "Stephen Strange",
       "universe": "Earth-616"
-    },
-    {
-      "id": 7,
-      "name": "Batman",
-      "realName": "Bruce Wayne",
-      "universe": "Gotham"
-    },
-    {
-      "id": 8,
-      "name": "test",
-      "realName": "tset",
-      "universe": "tset"
-    },
-    {
-      "id": 9,
-      "name": "tsetstest",
-      "realName": "testsetest",
-      "universe": "tsetets"
-    },
-    {
-      "id": 10,
-      "name": "testest",
-      "realName": "etsetset",
-      "universe": "testsetse"
-    },
-    {
-      "id": 11,
-      "name": "setsetset",
-      "realName": "etsteset",
-      "universe": "etsetse"
-    },
-    {
-      "id": 12,
-      "name": "setse",
-      "realName": "tsete",
-      "universe": "testst"
-    },
-    {
-      "id": 13,
-      "name": "ye",
-      "realName": "te",
-      "universe": "te"
-    },
-    {
-      "id": 14,
-      "name": "est",
-      "realName": "tset",
-      "universe": "test"
-    },
-    {
-      "id": 15,
-      "name": "testset",
-      "realName": "estsetsetset",
-      "universe": "setstet"
-    },
-    {
-      "id": 16,
-      "name": "tsete",
-      "realName": "tess",
-      "universe": "tsts"
-    },
-    {
-      "id": 17,
-      "name": "test",
-      "realName": "stset",
-      "universe": "tsetse"
-    },
-    {
-      "id": 18,
-      "name": "ThisIsATtest",
-      "realName": "realbadman",
-      "universe": "nigga"
-    },
-    {
-      "id": 19,
-      "name": "test",
-      "realName": "sett",
-      "universe": "tes"
-    },
-    {
-      "id": 20,
-      "name": "tsete",
-      "realName": "tess",
-      "universe": "Earth-616"
-    },
-    {
-      "id": 21,
-      "name": "Thisis a test",
-      "realName": "again",
-      "universe": "reer"
-    },
-    {
-      "id": 22,
-      "name": "re",
-      "realName": "re",
-      "universe": "re"
-    },
-    {
-      "id": 23,
-      "name": "tert",
-      "realName": "tret",
-      "universe": "tret"
-    },
-    {
-      "id": 24,
-      "name": "test",
-      "realName": "test",
-      "universe": "test"
-    },
-    {
-      "id": 25,
-      "name": "test",
-      "realName": "test",
-      "universe": "test"
-    },
-    {
-      "id": 26,
-      "name": "this is a test",
-      "realName": "again",
-      "universe": "again"
-    },
-    {
-      "id": 27,
-      "name": "tr",
-      "realName": "rere",
-      "universe": "rere"
-    },
-    {
-      "id": 28,
-      "name": "THis is another test",
-      "realName": "again",
-      "universe": "ress"
-    },
-    {
-      "id": 29,
-      "name": "43",
-      "realName": "43",
-      "universe": "43"
-    },
-    {
-      "id": 30,
-      "name": "3",
-      "realName": "32",
-      "universe": "32"
-    },
-    {
-      "id": 31,
-      "name": "12",
-      "realName": "12",
-      "universe": "12"
-    },
-    {
-      "id": 32,
-      "name": "33",
-      "realName": "33",
-      "universe": "33"
-    },
-    {
-      "id": 33,
-      "name": "33",
-      "realName": "33",
-      "universe": "33"
-    },
-    {
-      "id": 34,
-      "name": "34",
-      "realName": "34",
-      "universe": "34"
-    },
-    {
-      "id": 35,
-      "name": "432",
-      "realName": "4324",
-      "universe": "432"
-    },
-    {
-      "id": 36,
-      "name": "543",
-      "realName": "543543",
-      "universe": "5435435"
-    },
-    {
-      "id": 37,
-      "name": "tert",
-      "realName": "ertert",
-      "universe": "terter"
-    },
-    {
-      "id": 38,
-      "name": "rwe",
-      "realName": "rwe",
-      "universe": "rewr"
-    },
-    {
-      "id": 39,
-      "name": "eqweq",
-      "realName": "eqweqw",
-      "universe": "ewqew"
-    },
-    {
-      "id": 40,
-      "name": "dsad",
-      "realName": "asdas",
-      "universe": "dsadasd"
-    },
-    {
-      "id": 41,
-      "name": "dasd",
-      "realName": "asdasd",
-      "universe": "sadasd"
-    },
-    {
-      "id": 42,
-      "name": "leo",
-      "realName": "letieh",
-      "universe": "mba mety amzay moa eh"
-    },
-    {
-      "id": 43,
-      "name": "iny",
-      "realName": "fa ",
-      "universe": "netyu"
     }
   ]
 }
