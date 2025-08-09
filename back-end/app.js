@@ -64,7 +64,7 @@ app.put("/characters/:id" , async (req, res) => {
         if(requiredId <= parsedData.characters.length && requiredId > 0){
             parsedData.characters[requiredId] = updated_character
             await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
-            res.status(201).send("Character edited successfully!!")
+            res.status(201).send(parsedData.characters)
         } else {
             throw new Error("The character you are trying to edit doesn't exist");
         }

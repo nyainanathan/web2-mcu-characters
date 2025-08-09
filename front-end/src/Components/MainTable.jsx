@@ -57,8 +57,7 @@ const MainTable = () => {
     const handleSubmit = async () => {
         const editedCharacter = { id, name, realName, universe };
         console.log(editedCharacter);
-       
-        await fetch(`${baseUrl}/characters/${id}`, {
+        const newEdditCharacter = await fetch(`${baseUrl}/characters/${id}`, {
             method: "PUT",
             headers:{
                 "Content-type" : "application/json"
@@ -66,8 +65,12 @@ const MainTable = () => {
             body: JSON.stringify(editedCharacter)
         } );
 
+        const data = await newEdditCharacter.json();
+        
         resetInputs();
+        setCharacters([...data]);
         setEditingMode(false);
+        console.log(characters);
     }
 
     const handleNewCharacter = async () => {
