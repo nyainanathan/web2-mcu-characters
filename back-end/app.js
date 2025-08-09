@@ -18,9 +18,9 @@ app.get("/characters", async (req, res) => {
         res.status(200).send(parsedData.characters);
     } catch (err) {
         console.error(err);
-        res.status(400).send(err)
-    }
-});
+        res.status(400).send({ error: err.message });
+    };
+})
 
 app.post("/characters" , async (req, res) => {
     try{
@@ -32,7 +32,7 @@ app.post("/characters" , async (req, res) => {
             parsedData.characters[i].id = i + 1;
         }
         await writeFile("./characters.json" , JSON.stringify(parsedData, null, 2) , "utf-8");
-        res.status(201).send("Character added successfully!!")
+        res.status(201).send(parsedData.characters[parsedData.characters.length - 1]);
     } catch (err) {
         console.error(err);
         res.status(400).send(err);

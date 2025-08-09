@@ -6,28 +6,32 @@ const MainTable = () => {
     const [characters, setCharacters] = useState([]);
     const PORT = 3000;
     const baseUrl = "http://127.0.0.1:" + PORT;
-    const [operations, setOperations] = useState(0);
-
+    
     const [id, setId] = useState("ID");
     const [name, setName] = useState("");
     const [realName, setRealName] = useState("");
     const [universe, setUniverse] = useState("");
 
-    const nameRef = useRef(null);
-    const realNameRef = useRef(null);
-    const universeRef = useRef(null);
-
-    const fetchData = async () => {
-        const response = await axios.get(baseUrl + "/characters");
-        setCharacters(response.data);
-    };
+    const [editingMode, setEditingMode] = useState(false);
+    
+    
 
     useEffect(() => {
+        const fetchData = async () => {
+        const response = await fetch(baseUrl + "/characters");
+        console.log("response" + response);
+        const data = await response.json();
+        console.log(data);
+        
+        setCharacters(data);
+    };
         fetchData();
-    }, [operations] );
+    }, [] );
 
 
     const handleEdit = (characterId) => {
+        setEditingMode(true);
+        
         let thischaracter ;
 
         for(const character of characters) {
@@ -63,23 +67,41 @@ const MainTable = () => {
         } );
 
         resetInputs();
-
-        setOperations(r => r+1)
-        
+        setEditingMode(false);
     }
+
+    const handleNewCharacter = async () => {
+        const newCharacter = {id, name, realName, universe};
+        const newCharacterAlreadyAdded = await fetch(`${baseUrl}/characters`, {
+            method: "POST",
+            headers: {
+                "Content-type" : "application/json"
+            },
+            body: JSON.stringify(newCharacter)
+        });
+        const data = await newCharacterAlreadyAdded.json()
+        setCharacters([...characters, data]);
+        console.log(characters);
+        
+        resetInputs();
+    }
+
 
     return (
         <>
             <h1 className='text-center p-4 text-4xl'>MCU Characters list</h1>
 
             <table className='w-1/2 border-1 m-auto'>
-                <tr className='h-12 border-1'>
+            <thead>
+                <tr key={"theader"} className='h-12 border-1'>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Real name</th>
                     <th>Universe</th>
                     <th>Actions</th>
                 </tr>
+                </thead>
+                <tbody>
                 {characters.map((character) => (
                     <tr key={character.id} className='h-12 text-center border-1'>
                         <td className='w-1/5'>{character.id}</td>
@@ -92,13 +114,14 @@ const MainTable = () => {
                         </td>
                     </tr>
                 ))}
-                <tr className='text-center h-12'>
+                </tbody>
+                <tfoot>
+                <tr key={"tfoot"} className='text-center h-12'>
                     <td>
                         {id}
                     </td>
                     <td>
                         <input 
-                        ref={nameRef}
                         className='text-center outline-0' 
                         type="text" 
                         name="name" 
@@ -111,7 +134,6 @@ const MainTable = () => {
                     </td>
                     <td>
                         <input 
-                        ref={realNameRef}
                         className='text-center outline-0' 
                         type="text" 
                         name="realName" 
@@ -124,7 +146,6 @@ const MainTable = () => {
                     </td>
                     <td>
                         <input 
-                        ref={universeRef}
                         className='text-center outline-0' 
                         type="text" name='universe' 
                         id='universe' 
@@ -135,10 +156,28 @@ const MainTable = () => {
                         />
                     </td>
                     <td> 
-                        <button onClick={handleSubmit} className='mr-4'>Confirm</button>
-                        <button onClick={resetInputs}>Clear</button>
+                        { editingMode && 
+                            <>
+                            <button onClick={handleSubmit} className='mr-4'>Confirm</button>
+                            <button onClick={ () => {
+                                resetInputs();
+                                setEditingMode(false);
+                            }
+                                }>Clear</button>
+                            </>
+                        }
+
+                        {
+                            !editingMode &&
+                            <>
+                            <button
+                            onClick={handleNewCharacter}
+                            >Submit</button>
+                            </>
+                        }
                     </td>
                 </tr>
+                </tfoot>
             </table>       
         </>
     );
