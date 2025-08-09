@@ -14,21 +14,69 @@
     },
     {
       "id": 3,
-      "name": "Black Widow",
-      "realName": "Natasha Romanoff",
-      "universe": "Earth-616"
-    },
-    {
-      "id": 4,
       "name": "Black Panther",
       "realName": "T'Challa",
       "universe": "Earth-616"
     },
     {
-      "id": 5,
+      "id": 4,
       "name": "Doctor Strange",
       "realName": "Stephen Strange",
       "universe": "Earth-610"
+    },
+    {
+      "id": 5,
+      "name": "Iron Man",
+      "realName": "Tony Stark",
+      "universe": "Earth-616"
+    },
+    {
+      "id": 6,
+      "name": "Thor",
+      "realName": "Thor Odinson",
+      "universe": "Earth-616"
+    },
+    {
+      "id": 7,
+      "name": "Hulk",
+      "realName": "Bruce Banner",
+      "universe": "Earth-616"
+    },
+    {
+      "id": 8,
+      "name": "Scarlet Witch",
+      "realName": "Wanda Maximoff",
+      "universe": "Earth-616"
+    },
+    {
+      "id": 9,
+      "name": "Vision",
+      "realName": "Vision",
+      "universe": "Earth-616"
+    },
+    {
+      "id": 10,
+      "name": "Falcon",
+      "realName": "Sam Wilson",
+      "universe": "Earth-616"
+    },
+    {
+      "id": 11,
+      "name": "Winter Soldier",
+      "realName": "Bucky Barnes",
+      "universe": "Earth-616"
+    },
+    {
+      "id": 12,
+      "name": "Ant-Man",
+      "realName": "Scott Lang",
+      "universe": "Earth-616"
+    },
+    {
+      "id": 13,
+      "name": "Captain Marvel",
+      "realName": "Carol Danvers",
+      "universe": "Earth-617"
     }
   ]
 }

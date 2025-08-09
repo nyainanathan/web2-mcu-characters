@@ -14,7 +14,9 @@ const MainTable = () => {
 
     const [editingMode, setEditingMode] = useState(false);
     
-    
+    const [deletePrompt, setDeletePrompt] = useState(false)
+    const [toDeleteId, setToDeleteId] = useState(null);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -97,6 +99,7 @@ const MainTable = () => {
 
         setCharacters([...data]);
         console.log(characters);
+        setDeletePrompt(false)
         
     }
 
@@ -104,7 +107,21 @@ const MainTable = () => {
         <>
             <h1 className='text-center p-4 text-4xl'>MCU Characters list</h1>
 
-            <table className='w-1/2 border-1 m-auto'>
+  
+
+            <table className='w-1/2 border-1 m-auto relative'>
+                        {
+                            deletePrompt && <>
+                                <div className=' absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-1 bg-amber-50 p-4 rounded-2xl'>
+                                    <p>You do really want to delete this character?</p>
+                                    
+                                        <button onClick={() => handleDelete(toDeleteId)} className='text-red-400'> &rarr; Yes, delete this character</button>
+                                        <br />
+                                        <button onClick={() => setDeletePrompt(false)} >&rarr; No, don't delete this character</button>
+                                    
+                                </div>
+                            </>
+                        }
             <thead>
                 <tr key={"theader"} className='h-12 border-1'>
                     <th>ID</th>
@@ -114,6 +131,7 @@ const MainTable = () => {
                     <th>Actions</th>
                 </tr>
                 </thead>
+   
                 <tbody>
                 {characters.map((character , index) => (
                     <tr key={index} className='h-12 text-center border-1'>
@@ -123,7 +141,7 @@ const MainTable = () => {
                         <td className='w-1/5'>{character.universe}</td>
                         <td className='flex h-full w-full justify-center items-center gap-3'>
                             <button onClick={() => handleEdit(character.id)} className='text-green-600'>Edit</button>
-                            <button onClick={() => handleDelete(character.id)} className='text-red-600'>Delete</button>
+                            <button onClick={() => {setToDeleteId(character.id) ; setDeletePrompt(true)}} className='text-red-600'>Delete</button>
                         </td>
                     </tr>
                 ))}
